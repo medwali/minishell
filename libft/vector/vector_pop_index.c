@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector_pop_index.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/30 05:33:00 by mel-idri          #+#    #+#             */
+/*   Updated: 2020/05/10 03:11:29 by mel-idri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "_vector_internal.h"
+
+int			vector_pop_index(t_vector *vector, size_t index, void *element)
+{
+	if (!vector || !element ||index >= vector->length || vector->length == 0)
+		return (-1);
+	ft_memcpy(element, vector->array + index * vector->element_size,
+		vector->element_size);
+	ft_memmove(vector->array + index * vector->element_size,
+		vector->array + (index + 1) * vector->element_size,
+		(vector->length - index + 1));
+	vector->length--;
+	if (vector->length > 16 && vector->length <= vector->capacity / 4)
+		_vector_shrink(vector);
+	return (0);
+}
