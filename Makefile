@@ -6,14 +6,16 @@
 #    By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/28 10:25:34 by mel-idri          #+#    #+#              #
-#    Updated: 2020/07/25 00:09:42 by mel-idri         ###   ########.fr        #
+#    Updated: 2020/11/13 17:17:26 by mel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 LIBFT = libft/libft.a
-MAKEFLAGS += --no-print-directory
 CFLAGS = -Wall -Wextra -Werror
+ifeq ($(DEBUG), true)
+	CFLAGS += -g
+endif
 CC = gcc
 SRCS = builtin_cd.c builtin_echo.c builtin_env.c builtin_exit.c \
 	builtin_setenv.c builtin_unsetenv.c create_child_process.c env_item.c \
@@ -24,13 +26,10 @@ SRCS = builtin_cd.c builtin_echo.c builtin_env.c builtin_exit.c \
 OBJS = $(addprefix  objs/, $(SRCS:.c=.o))
 INCLUDES = minishell.h minishell_typedefs.h
 
-
 all:
-	$(MAKE) libft
 	$(MAKE) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(MAKE) libft
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
 objs/%.o : %.c | objs
@@ -38,8 +37,8 @@ objs/%.o : %.c | objs
 
 $(SRCS) : $(INCLUDES)
 
-libft:
-	$(MAKE) -C libft/
+$(LIBFT) : force
+	$(MAKE) -C libft
 
 objs:
 	mkdir objs
@@ -56,4 +55,6 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-.PHONY: all fclean re clean libft
+force:
+
+.PHONY: all fclean re clean force
