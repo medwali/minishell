@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 02:23:22 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/06/23 16:02:54 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/11/15 00:08:19 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static t_vector	*get_sub_tokens(char *val)
 	{
 		if (*start == ' ' || *start == '\t')
 		{
-			vector_push(sub_tokens, (t_token[1]){{SEPARATOR, NULL}});
+			vector_push(sub_tokens, &(t_token){SEPARATOR, NULL});
 			start = skip_chars(start, " \t");
 		}
 		else
 		{
 			end = skip_until_chars(start, " \t");
 			content = ft_strndup(start, end - start);
-			vector_push(sub_tokens, (t_token[1]){{STRING, content}});
+			vector_push(sub_tokens, &(t_token){STRING, content});
 			start = end;
 		}
 	}
