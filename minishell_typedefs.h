@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:17:45 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/08 13:37:16 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:17:40 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_token
 }					t_token;
 typedef enum		e_path_state
 {
-					NO_PATH,
+					NO_PATH = 1,
 					NOT_EXECUTABLE,
 					EXECUTABLE
 }					t_path_state;

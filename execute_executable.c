@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 16:02:20 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/24 23:39:49 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:18:04 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void				execute_executable(char **argv, char **envp)
 	int				is_path;
 
 	exe_path = NULL;
+	path_state = 0;
 	is_path = ft_strchr(argv[0], '/') != NULL;
 	if (is_path)
 		exe_path = argv[0];
@@ -77,5 +78,4 @@ void				execute_executable(char **argv, char **envp)
 		print_error("minishell", exe_path, E_PERM_DENIED);
 	else
 		create_child_process(exe_path, argv, envp);
-	free(exe_path);
 }
