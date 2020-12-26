@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 14:25:34 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/11 14:33:37 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/07/27 17:26:42 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ static int	update_cache(char **cache, int is_eof, char *newline)
 	if (newline)
 	{
 		tmp = *cache;
-		if ((*cache = ft_strdup(newline + 1)) == NULL)
-		{
-			*cache = tmp;
-			return (-1);
-		}
+		*cache = ft_strdup(newline + 1);
 		free(tmp);
 	}
 	else if (is_eof && *cache && **cache)
