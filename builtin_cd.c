@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/14 15:01:22 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/12/26 03:06:17 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void	change_directory(char *dir)
 	if (getcwd(cwd, MAXPATHLEN + 1) == NULL)
 		set_env_item(*env_vec() ,"PWD", "");
 	else
-		set_env_item(*env_vec() ,"PWD", cwd);		
+		set_env_item(*env_vec() ,"PWD", cwd);
+	free(oldpwd);
 }
 
 void		builtin_cd(char **args)
@@ -71,14 +72,12 @@ void		builtin_cd(char **args)
 	{
 		if (args[0][0] == '\0')
 			return ;
-		else if (ft_strequ(args[0], "-") &&
-				(dir = get_env_value("OLDPWD")) == NULL)
+		dir = ft_strequ(args[0], "-") ? get_env_value("OLDPWD") :
+			ft_strdup(args[0]);
+		if (dir == NULL)
 			return ((void)ft_putendl_fd("minishell: cd: OLDPWD not set", 2));
-		else
-			dir = ft_strdup(args[0]);
 	}
-	if (!is_executable_dir(dir))
-		return ;
-	change_directory(dir);
+	if (is_executable_dir(dir))
+		change_directory(dir);
 	free(dir);
 }
