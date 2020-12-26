@@ -20,14 +20,16 @@ void	expand_tilde(t_vector *tokens)
 
 	i = 0;
 	var_value = get_env_value("HOME");
+	var_value = var_value ? var_value : ft_strdup("");
 	tokens_array = (t_token*)tokens->array;
 	while (i < tokens->length)
 	{
 		if (tokens_array[i].type == TILDE)
 		{
-			tokens_array[i].content = var_value ? var_value : ft_strdup("");
+			tokens_array[i].content = ft_strdup(var_value);
 			tokens_array[i].type = STRING;
 		}
 		i++;
 	}
+	free(var_value);
 }
