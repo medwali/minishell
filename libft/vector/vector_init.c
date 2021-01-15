@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 05:32:59 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/05/10 03:11:07 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:11:13 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_vector_internal.h"
+#include "internal/vector_internal.h"
 
 t_vector	*vector_init(size_t element_size,
 		void (*free_element)(void *element))

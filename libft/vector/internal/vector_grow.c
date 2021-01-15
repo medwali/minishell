@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _vector_grow.c                                     :+:      :+:    :+:   */
+/*   vector_grow.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 05:32:59 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/06/14 20:42:15 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:14:31 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_vector_internal.h"
+#include "vector_internal.h"
 
-void	_vector_grow(t_vector *vector)
+void	vector_grow(t_vector *vector)
 {
 	void	*new_array;
 

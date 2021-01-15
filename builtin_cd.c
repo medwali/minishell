@@ -6,18 +6,19 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/12/26 03:06:17 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:00:15 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 static int	is_executable_dir(char *dir)
 {
 	struct stat st;
 
 	if (stat(dir, &st) == -1)
 	{
-		print_error("minishell: cd", NULL ,E_FILE_NOT_FOUND);
+		print_error("minishell: cd", NULL, E_FILE_NOT_FOUND);
 		return (0);
 	}
 	if (!S_ISDIR(st.st_mode))
@@ -49,16 +50,16 @@ static void	change_directory(char *dir)
 	else
 		set_env_item(*env_vec(), "OLDPWD", "");
 	if (getcwd(cwd, MAXPATHLEN + 1) == NULL)
-		set_env_item(*env_vec() ,"PWD", "");
+		set_env_item(*env_vec(), "PWD", "");
 	else
-		set_env_item(*env_vec() ,"PWD", cwd);
+		set_env_item(*env_vec(), "PWD", cwd);
 	free(oldpwd);
 }
 
 void		builtin_cd(char **args)
 {
 	size_t	argc;
-	char 	*dir;
+	char	*dir;
 
 	argc = 0;
 	dir = NULL;

@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 02:23:22 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/11/15 00:08:19 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:57:50 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void			expand_var_to_str(t_token *var_token)
 
 static t_vector	*get_sub_tokens(char *val)
 {
-	char 		*start;
-	char 		*end;
+	char		*start;
+	char		*end;
 	char		*content;
 	t_vector	*sub_tokens;
 

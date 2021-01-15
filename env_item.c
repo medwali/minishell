@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 23:59:48 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/11 14:15:02 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:53:23 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	unset_env_item(char *env_var)
 	}
 }
 
-void	set_env_item(t_vector *env_vec, char* env_var, char *env_value)
+void	set_env_item(t_vector *env_vec, char *env_var, char *env_value)
 {
 	char	*new_env_item;
 	char	**old_env_item;

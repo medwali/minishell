@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 17:52:08 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/04/29 01:07:10 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:27:01 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*safe_malloc(size_t size)
 {
 	void	*ptr;
 
-	if((ptr = malloc(size)) == NULL)
+	if ((ptr = malloc(size)) == NULL)
 		exit(1);
 	return (ptr);
 }

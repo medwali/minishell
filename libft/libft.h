@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:28:52 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/09 14:12:56 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:48:44 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ typedef struct	s_bigint
 }				t_bigint;
 typedef enum	e_split_mode
 {
-				ALLOW_EMPTY_WORD,
-				REJECT_EMPTY_WORD
+	ALLOW_EMPTY_WORD,
+	REJECT_EMPTY_WORD
 }				t_split_mode;
 char			**ft_strsplit(char const *s, char c, t_split_mode split_mode);
 t_bigint		*ft_bigint_new(unsigned int size);
@@ -149,6 +149,5 @@ char			*skip_until_chars(char *str, char *stop_chars);
 char			*skip_chars(char *str, char *skipped_chars);
 void			ft_free_2d_chr_array(char **arr);
 void			ft_free_ptr(void *ptr);
-
 
 #endif

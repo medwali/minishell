@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/08 23:12:59 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:43:17 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ void		builtin_setenv(char **args)
 		set_env_item(*env_vec(), args[0], args[1]);
 	else
 		print_error("minishell: setenv", NULL, E_TOO_MANY_ARGS);
-
 }

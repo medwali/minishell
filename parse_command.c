@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/19 18:06:35 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/11 14:09:03 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:57:33 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int	is_all_double_quotes_matched(char *cmd)
 	else
 		return (1);
 }
-
 
 char		**parse_command(char *cmd)
 {

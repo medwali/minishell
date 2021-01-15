@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 13:06:16 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/06/18 20:10:15 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:00:55 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	get_args(t_token *tokens, size_t tokens_count, t_vector *args)
 		}
 		else if (tokens[i].type == DBL_QT_START)
 			is_arg_exist = 1;
-		else if (tokens[i].type == SEPARATOR ||	tokens[i].type == CMD_END)
+		else if (tokens[i].type == SEPARATOR || tokens[i].type == CMD_END)
 			if (is_arg_exist)
 			{
 				vector_push(args, &arg);

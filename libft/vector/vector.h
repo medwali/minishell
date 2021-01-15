@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 11:13:05 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/06/15 20:09:28 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/11/12 18:53:00 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
+
 typedef struct	s_vector
 {
 	size_t		capacity;
@@ -21,7 +22,7 @@ typedef struct	s_vector
 	void		*array;
 }				t_vector;
 t_vector		*vector_init(size_t element_size
-	,void (*free_element)(void *element));
+	, void (*free_element)(void *element));
 int				vector_push(t_vector *vector, void *element);
 int				vector_insert(t_vector *vector, void *element, size_t index);
 int				vector_pop(t_vector *vector, void *element);

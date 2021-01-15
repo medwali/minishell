@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_insert_all.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 00:20:21 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/06/18 02:49:16 by mel-idri         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:11:13 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_vector_internal.h"
+#include "internal/vector_internal.h"
 
 int	vector_insert_all(t_vector *vector, t_vector *inserted_vec, size_t index)
 {
@@ -18,7 +18,7 @@ int	vector_insert_all(t_vector *vector, t_vector *inserted_vec, size_t index)
 			inserted_vec->element_size)
 		return (-1);
 	if (vector->length + inserted_vec->length > vector->capacity)
-		_vector_grow_above(vector, vector->length + inserted_vec->length);
+		vector_grow_above(vector, vector->length + inserted_vec->length);
 	if (index > vector->length)
 		index = vector->length;
 	if (index < vector->length)

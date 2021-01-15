@@ -6,13 +6,13 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 00:17:40 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/10 00:13:17 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:03:55 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_env_var_matched(char *env_var, char *env_item)
+int			is_env_var_matched(char *env_var, char *env_item)
 {
 	size_t	i;
 
@@ -51,7 +51,7 @@ t_vector	**env_vec(void)
 	return (&env_vec);
 }
 
-char 		**find_env_item(t_vector *env_vec, char *env_var)
+char		**find_env_item(t_vector *env_vec, char *env_var)
 {
 	char		**env_items;
 	size_t		i;
@@ -67,7 +67,7 @@ char 		**find_env_item(t_vector *env_vec, char *env_var)
 	return (NULL);
 }
 
-void	print_all_env_items(t_vector *env_vec)
+void		print_all_env_items(t_vector *env_vec)
 {
 	char	**env_items;
 

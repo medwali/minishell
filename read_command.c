@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 14:25:34 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/27 17:26:42 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:55:53 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ char		*read_command(void)
 	char		*command;
 
 	read_size = 0;
-	while (!(newline = ft_strchr(cache, '\n')) && 
-		(read_size = read(0, buf, BUFF_SIZE))  > 0)
+	while (!(newline = ft_strchr(cache, '\n')) &&
+		(read_size = read(0, buf, BUFF_SIZE)) > 0)
 	{
 		buf[read_size] = '\0';
 		cache = ft_strjoin_free(cache ? cache : ft_strdup(""), buf, 1, 0);
 	}
-	if (read_size == -1  
+	if (read_size == -1
 			|| (command = get_command(cache, read_size == 0, newline)) == NULL)
 		return (NULL);
 	if (update_cache(&cache, read_size == 0, newline) == -1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_whole.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylagtab <ylagtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 21:30:53 by ylagtab           #+#    #+#             */
-/*   Updated: 2019/12/25 18:25:42 by ylagtab          ###   ########.fr       */
+/*   Updated: 2021/01/14 20:49:21 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_bigint	*get_whole(unsigned long mantissa, int exp)
 	if ((bg_int = ft_bigint_from_uint128(m)) == NULL)
 		return (NULL);
 	if (exp >= 128)
-		if ((bg_int = ft_bigint_mult(bg_int, ft_bigint_power(2, exp - 127))) == NULL)
+		if ((bg_int = ft_bigint_mult(bg_int, ft_bigint_power(2, exp - 127))) ==
+				NULL)
 			return (NULL);
 	len = bg_int->length - 1;
 	while (bg_int->digits[len] == 0)

@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 16:02:20 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/09/11 01:18:04 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:56:13 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void				execute_executable(char **argv, char **envp)
 		print_error("minishell", exe_path, E_FILE_NOT_FOUND);
 	else if (!is_path && path_state == NO_PATH)
 		print_error("minishell", argv[0], E_CMD_NOT_FOUND);
-	else if((is_path && access(exe_path, X_OK) != 0) ||
+	else if ((is_path && access(exe_path, X_OK) != 0) ||
 			path_state == NOT_EXECUTABLE)
 		print_error("minishell", exe_path, E_PERM_DENIED);
 	else

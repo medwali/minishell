@@ -2,31 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                     +:+ +:+         +:+     */
+/*                                                    +:+ +:+         +:+     */
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:14:53 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/03/28 21:57:25 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:54:57 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	print_args(char **args)
-{
-	int is_first = 1;
-	printf("[");
-	while (*args)
-	{
-		if (!is_first)
-			printf(", ");
-		else
-			is_first = 0;
-		printf("\"%s\"", *args++);
-	}
-	printf("]\n");
-	return (0);
-}
 
 int		main(int argc, char **argv, char **envp)
 {

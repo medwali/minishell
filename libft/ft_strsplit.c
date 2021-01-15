@@ -6,13 +6,13 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 23:56:23 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/24 23:12:01 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:26:29 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	count_words(const char *s, char c)
+static int	count_words(const char *s, char c)
 {
 	int		words;
 	size_t	i;
@@ -35,7 +35,7 @@ static	int	count_words(const char *s, char c)
 	return (words);
 }
 
-static char		**split_reject_empty(char const *s, char c)
+static char	**split_reject_empty(char const *s, char c)
 {
 	char	**words;
 	size_t	i;
@@ -88,10 +88,10 @@ static char	**split_allow_empty(char const *str, char c)
 		start = *end ? end + 1 : end;
 	}
 	words[i] = NULL;
-	return (words);	
-}  
+	return (words);
+}
 
-char **ft_strsplit(char const *s, char c, t_split_mode split_mode)
+char		**ft_strsplit(char const *s, char c, t_split_mode split_mode)
 {
 	if (split_mode == ALLOW_EMPTY_WORD)
 		return (split_allow_empty(s, c));

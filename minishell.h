@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:56:25 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/11 14:26:24 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/14 20:01:34 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "minishell_typedefs.h"
 # define BUILTIN_EXECUTED 0
 # define BUILTIN_NOT_FOUND 1
-# define VAR_LETTERS ALNUM "_"
-# define ALNUM "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define ALPHA "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define DIGITS "0123456789"
 # define E_TOO_MANY_ARGS 0
 # define E_FILE_NOT_FOUND 1
 # define E_NOT_A_DIR 2
@@ -49,11 +49,11 @@ char		**extract_args(t_vector *tokens);
 char		*get_env_value(char *var);
 t_vector	**env_vec(void);
 t_vector	*create_env_vector(char **envp);
-char 		**find_env_item(t_vector *env_vec, char *env_var);
+char		**find_env_item(t_vector *env_vec, char *env_var);
 int			is_env_var_matched(char *env_var, char *env_item);
 void		print_all_env_items(t_vector *env_vec);
 void		unset_env_item(char *env_var);
-void		set_env_item(t_vector *env_vec, char* env_var, char *env_value);
+void		set_env_item(t_vector *env_vec, char *env_var, char *env_value);
 char		*get_env_value(char *env_var);
 int			execute_builtin(char **args);
 void		execute_executable(char **args, char **envp);
@@ -65,6 +65,5 @@ void		builtin_setenv(char **argv);
 void		builtin_unsetenv(char **argv);
 void		create_child_process(char *exe_path, char **argv, char **envp);
 void		print_error(char *prefix, char *var, int error_num);
-
 
 #endif
