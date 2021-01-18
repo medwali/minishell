@@ -6,7 +6,7 @@
 #    By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/29 16:45:44 by mel-idri          #+#    #+#              #
-#    Updated: 2021/01/18 17:38:31 by mel-idri         ###   ########.fr        #
+#    Updated: 2021/01/18 18:35:18 by mel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,14 +39,6 @@ LIBFT_SRC = ft_autoalloc.c ft_nbrlen.c ft_nbrlen_base.c ft_atoi.c \
 	ft_free_2d_chr_array.c ft_free_ptr.c
 LIBFT_OBJ = $(addprefix $(OBJS_DIR)/, $(LIBFT_SRC:.c=.o))
 
-PRINTF_INC = libft.h ft_printf/ft_printf.h
-PRINTF_SRC = conv_di.c conv_u.c conv_o.c conv_c.c conv_s.c conv_f.c \
-	conv_f_helper.c conv_percenatge.c conv_x.c conv_p.c \
-	ft_printf.c parser.c \
-	util.c apply_conv_function.c read_numbers.c \
-	get_whole.c get_fraction.c round_float.c
-PRINTF_OBJ = $(addprefix $(OBJS_DIR)/, $(PRINTF_SRC:.c=.o))
-
 VECTOR_INC = vector/vector.h vector/internal/vector_internal.h
 VECTOR_SRC = vector_free.c vector_grow.c vector_init.c \
 	vector_insert.c vector_pop.c vector_pop_index.c vector_push.c \
@@ -56,7 +48,7 @@ VECTOR_OBJ = $(addprefix $(OBJS_DIR)/, $(VECTOR_SRC:.c=.o))
 
 OBJS_DIR = objs
 
-ALL_OBJS = $(LIBFT_OBJ) $(PRINTF_OBJ) $(VECTOR_OBJ)
+ALL_OBJS = $(LIBFT_OBJ) $(VECTOR_OBJ)
 
 all: $(NAME)
 
@@ -74,8 +66,6 @@ objs/%.o : */*/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT_OBJ): $(LIBFT_INC) | $(OBJS_DIR)
-
-$(PRINTF_OBJ): $(PRINTF_INC) | $(OBJS_DIR) 
 
 $(VECTOR_OBJ): $(VECTOR_INC) | $(OBJS_DIR) 
 
