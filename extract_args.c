@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 13:06:16 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 20:00:55 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/19 12:33:46 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,24 @@ static void	get_args(t_token *tokens, size_t tokens_count, t_vector *args)
 {
 	size_t	i;
 	char	*arg;
-	int		is_arg_exist;
 
 	i = 0;
-	is_arg_exist = 0;
-	arg = ft_strdup("");
+	arg = NULL;
 	while (i < tokens_count)
 	{
-		if (tokens[i].type == STRING && tokens[i].content[0] != 0)
+		if (tokens[i].type == DBL_QT_START ||
+					(tokens[i].type == STRING && tokens[i].content[0] != 0))
 		{
-			arg = ft_strjoin_free(arg, tokens[i].content, 1, 0);
-			is_arg_exist = 1;
+			arg = arg == NULL ? ft_strdup("") : arg;
+			if (tokens[i].type == STRING)
+				arg = ft_strjoin_free(arg, tokens[i].content, 1, 0);
 		}
-		else if (tokens[i].type == DBL_QT_START)
-			is_arg_exist = 1;
-		else if (tokens[i].type == SEPARATOR || tokens[i].type == CMD_END)
-			if (is_arg_exist)
-			{
-				vector_push(args, &arg);
-				tokens[i].type == SEPARATOR ? (arg = ft_strdup("")) : 0;
-				is_arg_exist = 0;
-			}
+		else if ((tokens[i].type == SEPARATOR || tokens[i].type == CMD_END) &&
+					arg)
+		{
+			vector_push(args, &arg);
+			arg = NULL;
+		}
 		i++;
 	}
 }
