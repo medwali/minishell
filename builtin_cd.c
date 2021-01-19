@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 20:00:15 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:49:47 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,23 @@ static int	is_executable_dir(char *dir)
 
 static void	change_directory(char *dir)
 {
-	char	cwd[MAXPATHLEN + 1];
-	char	*oldpwd;
+	char	*cwd;
 
+	cwd = get_env_value("PWD");
+	if ((cwd = get_env_value("PWD")) == NULL)
+		cwd = getcwd(NULL, 0);
 	if (chdir(dir) == -1)
 	{
 		print_error("minishell: cd", NULL, E_CANT_CHDIR);
+		free(cwd);
 		return ;
 	}
-	oldpwd = get_env_value("PWD");
-	if (oldpwd)
-		set_env_item(*env_vec(), "OLDPWD", oldpwd);
+	if (cwd)
+		set_env_item(*env_vec(), "OLDPWD", cwd);
 	else
 		set_env_item(*env_vec(), "OLDPWD", "");
-	if (getcwd(cwd, MAXPATHLEN + 1) == NULL)
-		set_env_item(*env_vec(), "PWD", "");
-	else
-		set_env_item(*env_vec(), "PWD", cwd);
-	free(oldpwd);
+	set_env_item(*env_vec(), "PWD", dir);
+	free(cwd);
 }
 
 void		builtin_cd(char **args)
