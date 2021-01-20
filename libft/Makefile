@@ -6,13 +6,16 @@
 #    By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/29 16:45:44 by mel-idri          #+#    #+#              #
-#    Updated: 2021/01/18 18:35:18 by mel-idri         ###   ########.fr        #
+#    Updated: 2021/01/20 17:15:25 by mel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CFLAGS = -Wall -Wextra  -Werror
+ifeq ($(DEBUG), true)
+	CFLAGS += -g
+endif
 CC = gcc
 
 LIBFT_INC = libft.h
