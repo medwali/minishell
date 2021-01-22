@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:56:25 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 20:01:34 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:38:34 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define E_EXECVE_FAILED 7
 # define E_FORK_FAILED 8
 # define E_UNMATCHED_DBL_QT 9
+# define E_STDIN_ERROR 10
 
 char		*read_command(void);
 int			is_var(char *str);

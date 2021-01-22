@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 14:25:34 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 19:55:53 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:47:34 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,12 @@ static char	*get_command(char *cache, int is_eof, char *newline)
 	return (ret);
 }
 
-static int	update_cache(char **cache, int is_eof, char *newline)
+static void	update_cache(char **cache, int is_eof, char *newline)
 {
-	char	*tmp;
-
 	if (newline)
-	{
-		tmp = *cache;
-		*cache = ft_strdup(newline + 1);
-		free(tmp);
-	}
+		ft_strcpy(*cache, newline + 1);
 	else if (is_eof && *cache && **cache)
 		ft_strdel(cache);
-	return (0);
 }
 
 char		*read_command(void)
@@ -54,13 +47,12 @@ char		*read_command(void)
 		buf[read_size] = '\0';
 		cache = ft_strjoin_free(cache ? cache : ft_strdup(""), buf, 1, 0);
 	}
-	if (read_size == -1
-			|| (command = get_command(cache, read_size == 0, newline)) == NULL)
-		return (NULL);
-	if (update_cache(&cache, read_size == 0, newline) == -1)
+	if (read_size == -1)
 	{
-		free(command);
+		print_error("minishell: read_command", NULL, E_STDIN_ERROR);
 		return (NULL);
 	}
+	command = get_command(cache, read_size == 0, newline);
+	update_cache(&cache, read_size == 0, newline);
 	return (command);
 }

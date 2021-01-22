@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:59:10 by mel-idri          #+#    #+#             */
-/*   Updated: 2020/07/09 22:19:35 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:38:14 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	print_error(char *prefix, char *var, int error_num)
 {
-	const char *error_msgs[10] = {"too many arguments",
+	const char *error_msgs[11] = {"too many arguments",
 	"No such file or directory", "Not a directory", "Permission denied",
 	"can't get current working directory", "can't change working directory",
 	"command not found", "execve failed", "fork failed",
-	"Unmatched double-quote"};
+	"Unmatched double-quote", "cannot read from stdin"};
 
 	if (prefix)
 	{

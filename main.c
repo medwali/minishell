@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:14:53 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 19:54:57 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/21 12:18:56 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int		main(int argc, char **argv, char **envp)
 	{
 		ft_putstr_fd("$> ", 1);
 		command = read_command();
-		if (command)
-			args = parse_command(command);
-		if (command == NULL || args == NULL)
+		if (command == NULL)
+		{
+			ft_putendl("exit");
+			exit(0);
+		}	
+		args = parse_command(command);
+		ft_strdel(&command);
+		if (args == NULL)
 			continue ;
 		if (execute_builtin(args) == BUILTIN_NOT_FOUND)
 			execute_executable(args, envp);

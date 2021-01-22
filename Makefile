@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/28 10:25:34 by mel-idri          #+#    #+#              #
-#    Updated: 2020/11/13 17:17:26 by mel-idri         ###   ########.fr        #
+#    Updated: 2021/01/22 16:41:16 by mel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ SRCS = builtin_cd.c builtin_echo.c builtin_env.c builtin_exit.c \
 OBJS = $(addprefix  objs/, $(SRCS:.c=.o))
 INCLUDES = minishell.h minishell_typedefs.h
 
-all:
-	$(MAKE) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)

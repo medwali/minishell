@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_executable.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 16:02:20 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 19:56:13 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/21 08:15:29 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,6 @@ void				execute_executable(char **argv, char **envp)
 		print_error("minishell", exe_path, E_PERM_DENIED);
 	else
 		create_child_process(exe_path, argv, envp);
+	if (exe_path != argv[0])
+		free(exe_path);
 }

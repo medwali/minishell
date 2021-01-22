@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/19 17:49:47 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:20:16 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	change_directory(char *dir)
 	char	*cwd;
 
 	cwd = get_env_value("PWD");
-	if ((cwd = get_env_value("PWD")) == NULL)
+	if (cwd == NULL)
 		cwd = getcwd(NULL, 0);
 	if (chdir(dir) == -1)
 	{
