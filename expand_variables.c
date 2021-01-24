@@ -16,7 +16,7 @@ void			expand_var_to_str(t_token *var_token)
 {
 	char	*value;
 
-	value = get_env_value(var_token->content);
+	value = get_env_value(NULL, var_token->content);
 	free(var_token->content);
 	var_token->content = value ? value : ft_strdup("");
 	var_token->type = STRING;
@@ -56,7 +56,7 @@ static void		expand_var_to_tokens(t_vector *tokens, size_t var_index)
 	t_vector	*sub_tokens;
 
 	var_token = ((t_token*)tokens->array) + var_index;
-	value = get_env_value(var_token->content);
+	value = get_env_value(NULL, var_token->content);
 	sub_tokens = get_sub_tokens(value ? value : "");
 	vector_remove(tokens, var_index);
 	vector_insert_all(tokens, sub_tokens, var_index);

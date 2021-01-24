@@ -19,7 +19,7 @@ void	expand_tilde(t_vector *tokens)
 	char	*var_value;
 
 	i = 0;
-	var_value = get_env_value("HOME");
+	var_value = get_env_value(NULL, "HOME");
 	var_value = var_value ? var_value : ft_strdup("");
 	tokens_array = (t_token*)tokens->array;
 	while (i < tokens->length)

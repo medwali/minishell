@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_item.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 23:59:48 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 19:53:23 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/24 08:59:37 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	set_env_item(t_vector *env_vec, char *env_var, char *env_value)
 	char	**old_env_item;
 
 	new_env_item = ft_strglue(env_var, '=', env_value);
-	if ((old_env_item = find_env_item(env_vec, env_var)) != NULL)
+	if ((old_env_item = find_env_item(env_vec->array, env_var)) != NULL)
 	{
 		free(*old_env_item);
 		*old_env_item = new_env_item;
@@ -48,12 +48,14 @@ void	set_env_item(t_vector *env_vec, char *env_var, char *env_value)
 			env_vec->length > 0 ? env_vec->length - 1 : 0);
 }
 
-char	*get_env_value(char *env_var)
+char	*get_env_value(char **envp, char *env_var)
 {
 	char	**env_item;
 	char	*env_value;
 
-	if ((env_item = find_env_item(*env_vec(), env_var)) != NULL)
+	if (envp == NULL)
+		envp = (*env_vec())->array;
+	if ((env_item = find_env_item(envp, env_var)) != NULL)
 	{
 		env_value = skip_until_chars(*env_item, "=") + 1;
 		return (ft_strdup(env_value));

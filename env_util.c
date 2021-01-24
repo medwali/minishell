@@ -6,7 +6,7 @@
 /*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 00:17:40 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 20:03:55 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/24 09:03:59 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ t_vector	**env_vec(void)
 	return (&env_vec);
 }
 
-char		**find_env_item(t_vector *env_vec, char *env_var)
+char		**find_env_item(char **envp, char *env_var)
 {
-	char		**env_items;
 	size_t		i;
 
+	if (envp == NULL)
+		return (NULL);
 	i = 0;
-	env_items = (char**)env_vec->array;
-	while (env_items[i])
+	while (envp[i])
 	{
-		if (is_env_var_matched(env_var, env_items[i]))
-			return (env_items + i);
+		if (is_env_var_matched(env_var, envp[i]))
+			return (envp + i);
 		i++;
 	}
 	return (NULL);

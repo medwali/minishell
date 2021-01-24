@@ -41,13 +41,14 @@ static t_path_state	find_exe_path(char **path_array, char *exe_name,
 	return (path_state);
 }
 
-static t_path_state	get_executable_path(char *exe_name, char **path)
+static t_path_state	get_executable_path(char *exe_name, char **path,
+		char **envp)
 {
 	char			*path_env_var;
 	char			**path_array;
 	t_path_state	path_state;
 
-	if ((path_env_var = get_env_value("PATH")) == NULL)
+	if ((path_env_var = get_env_value(envp, "PATH")) == NULL)
 		return (NO_PATH);
 	path_array = ft_strsplit(path_env_var, ':', ALLOW_EMPTY_WORD);
 	path_state = find_exe_path(path_array, exe_name, path);
@@ -68,7 +69,7 @@ void				execute_executable(char **argv, char **envp)
 	if (is_path)
 		exe_path = argv[0];
 	else
-		path_state = get_executable_path(argv[0], &exe_path);
+		path_state = get_executable_path(argv[0], &exe_path, envp);
 	if (is_path && access(exe_path, F_OK) != 0)
 		print_error("minishell", exe_path, E_FILE_NOT_FOUND);
 	else if (!is_path && path_state == NO_PATH)
