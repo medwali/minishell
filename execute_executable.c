@@ -71,12 +71,12 @@ void				execute_executable(char **argv, char **envp)
 	else
 		path_state = get_executable_path(argv[0], &exe_path, envp);
 	if (is_path && access(exe_path, F_OK) != 0)
-		print_error("minishell", exe_path, E_FILE_NOT_FOUND);
+		print_error("minishell", ft_strdup(exe_path), E_FILE_NOT_FOUND);
 	else if (!is_path && path_state == NO_PATH)
-		print_error("minishell", argv[0], E_CMD_NOT_FOUND);
+		print_error("minishell", ft_strdup(argv[0]), E_CMD_NOT_FOUND);
 	else if ((is_path && access(exe_path, X_OK) != 0) ||
 			path_state == NOT_EXECUTABLE)
-		print_error("minishell", exe_path, E_PERM_DENIED);
+		print_error("minishell", ft_strdup(exe_path), E_PERM_DENIED);
 	else
 		create_child_process(exe_path, argv, envp);
 	if (exe_path != argv[0])

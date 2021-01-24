@@ -35,6 +35,7 @@
 # define E_FORK_FAILED 8
 # define E_UNMATCHED_DBL_QT 9
 # define E_STDIN_ERROR 10
+# define E_INVALID_ARG 11
 
 char		*read_command(void);
 int			is_var(char *str);

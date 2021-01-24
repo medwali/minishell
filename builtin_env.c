@@ -22,6 +22,12 @@ void		builtin_env(char **args)
 	i = 0;
 	while ((equal_sign = ft_strchr(args[i], '=')))
 	{
+		if (args[i][0] == '=')
+		{
+			print_error("env", ft_strjoin("setenv ", args[i]), E_INVALID_ARG);
+			vector_free(tmp_env_vec);
+			return ;
+		}
 		*equal_sign = '\0';
 		set_env_item(tmp_env_vec, args[i], equal_sign + 1);
 		i++;

@@ -23,12 +23,12 @@ static int	is_executable_dir(char *dir)
 	}
 	if (!S_ISDIR(st.st_mode))
 	{
-		print_error("minishell: cd", dir, E_NOT_A_DIR);
+		print_error("minishell: cd", ft_strdup(dir), E_NOT_A_DIR);
 		return (0);
 	}
 	if (access(dir, X_OK) == -1)
 	{
-		print_error("minishell: cd", dir, E_PERM_DENIED);
+		print_error("minishell: cd", ft_strdup(dir), E_PERM_DENIED);
 		return (0);
 	}
 	return (1);
