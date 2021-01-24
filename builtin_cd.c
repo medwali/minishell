@@ -62,7 +62,7 @@ void		builtin_cd(char **args)
 
 	argc = 0;
 	dir = NULL;
-	while (args[argc])
+	while (argc < 2 && args[argc])
 		argc++;
 	if (argc > 1)
 		return ((void)print_error("minishell: cd", NULL, E_TOO_MANY_ARGS));

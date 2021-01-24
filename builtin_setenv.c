@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_setenv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 16:43:17 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/24 11:16:07 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		builtin_setenv(char **args)
 	size_t	argc;
 
 	argc = 0;
-	while (args[argc])
+	while (argc < 3 && args[argc])
 		argc++;
 	if (argc == 0)
 		print_all_env_items(*env_vec());
