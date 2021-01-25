@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/24 12:06:23 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/25 17:48:53 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,32 @@ static int	is_executable_dir(char *dir)
 	return (1);
 }
 
-static void	change_directory(char *dir)
+static void	change_directory(char *dir, int is_oldpwd)
 {
+	char	*oldpwd;
 	char	*cwd;
 
-	cwd = get_env_value(NULL, "PWD");
-	if (cwd == NULL)
-		cwd = getcwd(NULL, 0);
+	cwd = ft_strdup("");
+	oldpwd = get_env_value(NULL, "PWD");
+	if (oldpwd == NULL)
+		oldpwd = getcwd(NULL, 0);
 	if (chdir(dir) == -1)
 	{
 		print_error("minishell: cd", NULL, E_CANT_CHDIR);
-		free(cwd);
+		free(oldpwd);
 		return ;
 	}
-	if (cwd)
-		set_env_item(*env_vec(), "OLDPWD", cwd);
+	if (is_oldpwd && (cwd = getcwd(NULL, 0)) != NULL)
+		ft_putendl(cwd);
+	else if (cwd == NULL)
+		print_error("minishell: cd", NULL, E_CANT_GETCWD);
+	free(cwd);
+	if (oldpwd)
+		set_env_item(*env_vec(), "OLDPWD", oldpwd);
 	else
 		set_env_item(*env_vec(), "OLDPWD", "");
 	set_env_item(*env_vec(), "PWD", dir);
-	free(cwd);
+	free(oldpwd);
 }
 
 void		builtin_cd(char **args)
@@ -78,6 +85,6 @@ void		builtin_cd(char **args)
 			return ((void)ft_putendl_fd("minishell: cd: OLDPWD not set", 2));
 	}
 	if (is_executable_dir(dir))
-		change_directory(dir);
+		change_directory(dir, ft_strequ(args[0], "-"));
 	free(dir);
 }
