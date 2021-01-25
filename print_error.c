@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:59:10 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/20 17:38:14 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/25 21:43:31 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	print_error(char *prefix, char *var, int error_num)
 {
-	const char *error_msgs[12] = {"too many arguments",
+	const char *error_msgs[13] = {"too many arguments",
 	"No such file or directory", "Not a directory", "Permission denied",
 	"can't get current working directory", "can't change working directory",
 	"command not found", "execve failed", "fork failed",
-	"Unmatched double-quote", "cannot read from stdin", "Invalid argument"};
+	"Unmatched double-quote", "cannot read from stdin", "Invalid argument",
+	"Variable name must contain alphanumeric characters"};
 
 	if (prefix)
 	{
@@ -31,7 +32,7 @@ void	print_error(char *prefix, char *var, int error_num)
 		ft_putstr_fd(": ", 2);
 		free(var);
 	}
-	if (0 <= error_num && error_num < 12)
+	if (0 <= error_num && error_num < 13)
 		ft_putstr_fd(error_msgs[error_num], 2);
 	ft_putchar_fd('\n', 2);
 }
