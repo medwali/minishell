@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_setenv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/25 22:37:09 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/26 09:25:44 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		is_valid_env_var(char *env_var)
 		env_var++;
 	}
 	return (1);
-}	
+}
 
 void	builtin_setenv(char **args)
 {
