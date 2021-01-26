@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:56:25 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/25 21:44:14 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:20:56 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define E_INVALID_ARG 11
 # define E_VAR_ALNUM 12
 
-char		*read_command(void);
+char		*read_command(int *ret);
 int			is_var(char *str);
 int			is_tilde(char *cmd, t_vector *tokens);
 void		expand_variables(t_vector *tokens);

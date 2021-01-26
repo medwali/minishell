@@ -41,7 +41,7 @@ static void	update_cache(char **cache, int is_eof, char *newline)
 		ft_strdel(cache);
 }
 
-char		*read_command(void)
+char		*read_command(int *ret)
 {
 	static char	*cache;
 	char		buf[BUFF_SIZE + 1];
@@ -50,6 +50,7 @@ char		*read_command(void)
 	char		*command;
 
 	read_size = 0;
+	*ret = 0;
 	while (!(newline = ft_strchr(cache, '\n')) &&
 		(read_size = read(0, buf, BUFF_SIZE)) > 0)
 	{
@@ -58,6 +59,7 @@ char		*read_command(void)
 	}
 	if (read_size == -1)
 	{
+		*ret = -1;
 		print_error("minishell: read_command", NULL, E_STDIN_ERROR);
 		return (NULL);
 	}

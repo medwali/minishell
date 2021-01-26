@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:14:53 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/24 16:59:42 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:21:42 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		main(int argc, char **argv, char **envp)
 	char		*command;
 	char		**args;
 	t_vector	*env_vector;
+	int			ret;
 
 	(void)argv[argc];
 	env_vector = create_env_vector(envp);
@@ -24,7 +25,7 @@ int		main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		ft_putstr_fd("$> ", 1);
-		if ((command = read_command()) == NULL)
+		if ((command = read_command(&ret)) == NULL && ret == 0)
 		{
 			ft_putendl("exit");
 			exit(0);
