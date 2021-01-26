@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 14:25:34 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/20 17:47:34 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:22:43 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@ static char	*get_command(char *cache, int is_eof, char *newline)
 
 static void	update_cache(char **cache, int is_eof, char *newline)
 {
+	char	*tmp;
+
 	if (newline)
-		ft_strcpy(*cache, newline + 1);
+	{
+		tmp = *cache;
+		if (newline[1] == 0)
+			*cache = NULL;
+		else
+			*cache = ft_strdup(newline + 1);
+		free(tmp);
+	}
 	else if (is_eof && *cache && **cache)
 		ft_strdel(cache);
 }
