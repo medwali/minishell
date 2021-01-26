@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:14:53 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/26 11:21:42 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:51:40 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		main(int argc, char **argv, char **envp)
 		if (args == NULL)
 			continue ;
 		if (execute_builtin(args) == BUILTIN_NOT_FOUND)
-			execute_executable(args, envp);
+			execute_executable(args, (*env_vec())->array);
 		ft_free_2d_chr_array(args);
 	}
 	return (0);
