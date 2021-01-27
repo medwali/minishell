@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/25 17:48:53 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/27 14:56:26 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,29 @@ static void	change_directory(char *dir, int is_oldpwd)
 	char	*oldpwd;
 	char	*cwd;
 
-	cwd = ft_strdup("");
-	oldpwd = get_env_value(NULL, "PWD");
-	if (oldpwd == NULL)
-		oldpwd = getcwd(NULL, 0);
-	if (chdir(dir) == -1)
+	cwd = NULL;
+	oldpwd = getcwd(NULL, 0);
+	if ((chdir(dir)) == -1)
 	{
 		print_error("minishell: cd", NULL, E_CANT_CHDIR);
 		free(oldpwd);
 		return ;
 	}
-	if (is_oldpwd && (cwd = getcwd(NULL, 0)) != NULL)
-		ft_putendl(cwd);
-	else if (cwd == NULL)
-		print_error("minishell: cd", NULL, E_CANT_GETCWD);
-	free(cwd);
 	if (oldpwd)
 		set_env_item(*env_vec(), "OLDPWD", oldpwd);
-	else
-		set_env_item(*env_vec(), "OLDPWD", "");
-	set_env_item(*env_vec(), "PWD", dir);
+	if ((cwd = getcwd(NULL, 0)) != NULL)
+	{
+		set_env_item(*env_vec(), "PWD", dir);
+		if (is_oldpwd)
+			ft_putendl(cwd);	
+	}
+	else if (is_oldpwd)
+		print_error("minishell: cd", NULL, E_CANT_GETCWD);
+	free(cwd);
 	free(oldpwd);
 }
 
-void		builtin_cd(char **args)
+static char	*get_dir(char **args)
 {
 	size_t	argc;
 	char	*dir;
@@ -72,19 +71,25 @@ void		builtin_cd(char **args)
 	while (argc < 2 && args[argc])
 		argc++;
 	if (argc > 1)
-		return ((void)print_error("minishell: cd", NULL, E_TOO_MANY_ARGS));
+		print_error("minishell: cd", NULL, E_TOO_MANY_ARGS);
 	else if (argc == 0 && (dir = get_env_value(NULL, "HOME")) == NULL)
-		return ((void)ft_putendl_fd("minishell: cd: HOME not set", 2));
+		ft_putendl_fd("minishell: cd: HOME not set", 2);
 	else if (argc == 1)
 	{
-		if (args[0][0] == '\0')
-			return ;
-		dir = ft_strequ(args[0], "-") ? get_env_value(NULL, "OLDPWD") :
-			ft_strdup(args[0]);
-		if (dir == NULL)
-			return ((void)ft_putendl_fd("minishell: cd: OLDPWD not set", 2));
+		if (ft_strequ(args[0], "-") && 
+				(dir = get_env_value(NULL, "OLDPWD")) == NULL)
+			ft_putendl_fd("minishell: cd: OLDPWD not set", 2);
+		else if (!ft_strequ(args[0], "") && dir == NULL)
+			dir = ft_strdup(args[0]);
 	}
-	if (is_executable_dir(dir))
+	return (dir);
+}
+
+void		builtin_cd(char **args)
+{
+	char	*dir;
+
+	if ((dir = get_dir(args)) != NULL && is_executable_dir(dir))
 		change_directory(dir, ft_strequ(args[0], "-"));
 	free(dir);
 }
