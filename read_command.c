@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 14:25:34 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/26 11:22:43 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:42:07 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ char		*read_command(int *ret)
 	}
 	command = get_command(cache, read_size == 0, newline);
 	update_cache(&cache, read_size == 0, newline);
+	if (g_is_interrupted)
+		ft_strdel(&command);
 	return (command);
 }

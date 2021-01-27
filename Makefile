@@ -6,7 +6,7 @@
 #    By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/28 10:25:34 by mel-idri          #+#    #+#              #
-#    Updated: 2021/01/22 16:41:16 by mel-idri         ###   ########.fr        #
+#    Updated: 2021/01/27 17:29:24 by mel-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS = builtin_cd.c builtin_echo.c builtin_env.c builtin_exit.c \
 	env_util.c execute_builtin.c execute_executable.c expand_tilde.c \
 	expand_variables.c extract_args.c main.c parse_command.c print_error.c \
 	read_command.c tokenize_cmd.c tokenize_double_quotes.c tokenize_string.c \
-	tokenize_variable.c
+	tokenize_variable.c sigint_handler.c
 OBJS = $(addprefix  objs/, $(SRCS:.c=.o))
 INCLUDES = minishell.h minishell_typedefs.h
 

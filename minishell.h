@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:56:25 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/26 11:20:56 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:10:58 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/param.h>
 # include <unistd.h>
 # include <sys/wait.h>
+# include <sys/ioctl.h>
 # include "libft/libft.h"
 # include "minishell_typedefs.h"
 # define BUILTIN_EXECUTED 0
@@ -38,6 +39,7 @@
 # define E_INVALID_ARG 11
 # define E_VAR_ALNUM 12
 
+extern int	g_is_interrupted;
 char		*read_command(int *ret);
 int			is_var(char *str);
 int			is_tilde(char *cmd, t_vector *tokens);
@@ -67,5 +69,6 @@ void		builtin_setenv(char **argv);
 void		builtin_unsetenv(char **argv);
 void		create_child_process(char *exe_path, char **argv, char **envp);
 void		print_error(char *prefix, char *var, int error_num);
+void		sigint_handler(int signum);
 
 #endif

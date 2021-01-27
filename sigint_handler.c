@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_child_process.c                             :+:      :+:    :+:   */
+/*   sigint_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 23:51:26 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/27 18:45:11 by mel-idri         ###   ########.fr       */
+/*   Created: 2021/01/27 17:29:03 by mel-idri          #+#    #+#             */
+/*   Updated: 2021/01/27 18:44:56 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	create_child_process(char *exe_path, char **argv, char **envp)
+void	sigint_handler(int signum)
 {
-	pid_t	pid;
-
-	signal(SIGINT, SIG_DFL);
-	if ((pid = fork()) == 0)
-	{
-		if (execve(exe_path, argv, envp) == -1)
-			print_error("minishell: execve", NULL, E_EXECVE_FAILED);
-		exit(1);
-	}
-	else if (pid == -1)
-		print_error("minishell: fork", NULL, E_FORK_FAILED);
-	else
-		wait(NULL);
-	signal(SIGINT, sigint_handler);
+	(void)signum;
+	g_is_interrupted = 1;
+	ft_putchar('\n');
+	ioctl(0, TIOCSTI, "\x04");
 }

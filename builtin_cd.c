@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/27 18:32:23 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:45:35 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*get_dir(char **args)
 		ft_putendl_fd("minishell: cd: HOME not set", 2);
 	else if (argc == 1)
 	{
-		if (ft_strequ(args[0], "-") && 
+		if (ft_strequ(args[0], "-") &&
 				(dir = get_env_value(NULL, "OLDPWD")) == NULL)
 			ft_putendl_fd("minishell: cd: OLDPWD not set", 2);
 		else if (!ft_strequ(args[0], "") && dir == NULL)
