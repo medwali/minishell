@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 02:34:50 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/27 14:56:26 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:32:23 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ static void	change_directory(char *dir, int is_oldpwd)
 		set_env_item(*env_vec(), "OLDPWD", oldpwd);
 	if ((cwd = getcwd(NULL, 0)) != NULL)
 	{
-		set_env_item(*env_vec(), "PWD", dir);
+		set_env_item(*env_vec(), "PWD", cwd);
 		if (is_oldpwd)
-			ft_putendl(cwd);	
+			ft_putendl(cwd);
 	}
-	else if (is_oldpwd)
+	else
 		print_error("minishell: cd", NULL, E_CANT_GETCWD);
 	free(cwd);
 	free(oldpwd);
