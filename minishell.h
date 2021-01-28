@@ -6,18 +6,14 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:56:25 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/27 18:10:58 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/28 09:21:42 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# include <stdio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-# include <sys/param.h>
-# include <unistd.h>
-# include <sys/wait.h>
 # include <sys/ioctl.h>
 # include "libft/libft.h"
 # include "minishell_typedefs.h"
