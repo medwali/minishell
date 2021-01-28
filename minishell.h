@@ -6,7 +6,7 @@
 /*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/28 09:56:25 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/28 09:21:42 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/28 09:59:10 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		builtin_exit(char **argv);
 void		builtin_env(char **argv);
 void		builtin_setenv(char **argv);
 void		builtin_unsetenv(char **argv);
+void		builtin_pwd(void);
 void		create_child_process(char *exe_path, char **argv, char **envp);
 void		print_error(char *prefix, char *var, int error_num);
 void		sigint_handler(int signum);

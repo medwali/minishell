@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-idri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-idri <mel-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 20:42:17 by mel-idri          #+#    #+#             */
-/*   Updated: 2021/01/14 19:56:51 by mel-idri         ###   ########.fr       */
+/*   Updated: 2021/01/28 09:59:57 by mel-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	execute_builtin(char **argv)
 		builtin_setenv(argv + 1);
 	else if (ft_strequ(builtin_cmd, "unsetenv"))
 		builtin_unsetenv(argv + 1);
+	else if (ft_strequ(builtin_cmd, "pwd"))
+		builtin_pwd();
 	else
 		return (BUILTIN_NOT_FOUND);
 	return (BUILTIN_EXECUTED);
